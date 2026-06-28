@@ -10,14 +10,29 @@ Output: 6
 Explanation: The subarray [4,-1,2,1] has the largest sum 6.
   */
 
+/* Brute force Approach
 class Solution {
-    public int maxSubArray(int[] nums) {
-        int maxCurrent = nums[0];
-        int maxGlobal = nums[0];
-        for(int i = 1;i<nums.length;i++){
-            maxCurrent = Math.max(nums[i],maxCurrent+nums[i]); //If negative value occur it compares and returns maxSum to maxCurrent
-            maxGlobal = Math.max(maxGlobal,maxCurrent);
+    public int maxProfit(int[] prices) {
+        int maxProfit = 0;
+        for(int i = 0;i<prices.length;i++){
+            for(int j = i+1;j<prices.length;j++){
+                int profit = prices[j] - prices[i];
+                maxProfit = Math.max(profit,maxProfit);
+            }
         }
-        return maxGlobal;
+        return maxProfit;
+    }
+}
+*/
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for(int price : prices){
+            minPrice = Math.min(minPrice,price);
+            int profit = price - minPrice;
+            maxProfit  = Math.max(profit,maxProfit);
+        }
+        return maxProfit;
     }
 }
