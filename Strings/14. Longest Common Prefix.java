@@ -16,7 +16,7 @@ Output: ""
 Explanation: There is no common prefix among the input strings.
 */
 
-public class Solution {
+public class Solution { 
     public static String longestCommonPrefix(String[] strs) {
         String first = strs[0];
         for(int i = 0;i<first.length();i++){
